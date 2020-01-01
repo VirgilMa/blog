@@ -4,8 +4,6 @@ title: Résumé
 permalink: /resume/
 ---
 
-OMG.
-
 This my first blog.
 
 And it is run by Jekyll.
