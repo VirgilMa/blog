@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Minimum Cost to Merge Stones(Leetcode 1000). 区间DP"
-date:   2020-2-6
+date: 2020-2-6
 categories: jekyll update
 ---
 
