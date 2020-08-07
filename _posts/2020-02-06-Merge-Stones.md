@@ -1,11 +1,12 @@
 ---
 layout: post
-title: ""Minimum Cost to Merge Stones(Leetcode 1000)" 区间DP"
+title: "Minimum Cost to Merge Stones(Leetcode 1000). 区间DP"
 date:   2020-2-6
 categories: jekyll update
 ---
 
 ## 题目
+
 > 摘抄自：[Leetcode No.1000](https://leetcode.com/problems/minimum-cost-to-merge-stones/)
 
 有 N 堆石头排成一排，第 i 堆中有  stones[i]  块石头。
@@ -16,7 +17,7 @@ categories: jekyll update
 
 示例 1：
 
-```
+```text
 输入：stones = [3,2,4,1], K = 2
 输出：20
 解释：
@@ -29,7 +30,7 @@ categories: jekyll update
 
 示例 2：
 
-```
+```text
 输入：stones = [3,2,4,1], K = 3
 输出：-1
 解释：任何合并操作后，都会剩下 2 堆，我们无法再进行合并。所以这项任务是不可能完成的。.
@@ -37,7 +38,7 @@ categories: jekyll update
 
 示例 3：
 
-```
+```text
 输入：stones = [3,5,1,2,6], K = 3
 输出：25
 解释：
@@ -49,7 +50,7 @@ categories: jekyll update
 
 提示：
 
-```
+```text
 1 <= stones.length <= 30
 2 <= K <= 30
 1 <= stones[i] <= 100
@@ -58,4 +59,3 @@ categories: jekyll update
 ## 解题
 
 ### 思路
-
