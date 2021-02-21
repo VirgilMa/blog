@@ -55,7 +55,3 @@ categories: jekyll update
 2 <= K <= 30
 1 <= stones[i] <= 100
 ```
-
-## 解题
-
-### 思路
