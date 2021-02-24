@@ -76,6 +76,12 @@ allowed to get before its capacity is automatically increased. (default value: 0
 
 ## 简述 Synchronized，Volatile，可重入锁的不同使用场景及优缺点
 
+**可重入锁**（ReentrantLock）：粒度相比synchronized更小，速度更快，个人认为可以替代synchronized
+
+**synchronized**：写法更简洁；
+
+**volatile**：是用来修饰变量，从而保证写入该变量时直接写入内存而不是写入缓存。
+
 ## synchronized 关键字底层是如何实现的？它与 Lock 相比优缺点分别是什么？
 
 ## JVM 中内存模型是怎样的，简述新生代与老年代的区别？
@@ -92,7 +98,12 @@ allowed to get before its capacity is automatically increased. (default value: 0
 
 ## Java 类的加载流程是怎样的？什么是双亲委派机制？
 
-## Java 中 sleep() 与 wait() 的区别
+## Java 中 sleep() 、wait() 、yield()的区别
+
+- **sleep**: 
+
+- **wait**: 
+- **yield**: 
 
 ## Java 线程池里的 arrayblockingqueue 与 linkedblockingqueue 的使用场景和区别
 
