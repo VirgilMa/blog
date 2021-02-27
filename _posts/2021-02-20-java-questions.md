@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "JAVA 面试题整理"
+title: "JAVA 面试题整理 (整理中)"
 ---
 
 ## HashMap 与 ConcurrentHashMap 的实现原理是怎样的？ConcurrentHashMap 是如何保证线程安全的？
@@ -85,6 +85,16 @@ allowed to get before its capacity is automatically increased. (default value: 0
 ## synchronized 关键字底层是如何实现的？它与 Lock 相比优缺点分别是什么？
 
 ## JVM 中内存模型是怎样的，简述新生代与老年代的区别？
+
+内存模型分为三块：栈、堆、静态方法区。栈存储每个线程的信息，堆存储对象实例。
+
+
+
+新生代：新生代又可以划分为一个Eden区和两个Survivor（幸存）区。 按照规定，新对象会首先分配在Eden中（如果对象过大，比如大数组，将会直接放到老年代）。在GC中，Eden中的对象会被移动到survivor中，直至对象满足一定的年纪（定义为熬过minor GC的次数），会被移动到老年代。
+
+
+
+老生代：新生代中的实例熬过一定的GC后，便会放到老生代
 
 ## 简述 Spring AOP 的原理
 
