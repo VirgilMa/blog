@@ -52,7 +52,9 @@ allowed to get before its capacity is automatically increased. (default value: 0
 
 ### ConcurrentHashMap实现原理
 
+使用segment来将锁的粒度减小。
 
+【TODO】
 
 
 
@@ -72,7 +74,33 @@ allowed to get before its capacity is automatically increased. (default value: 0
 
 简单来说, 自旋锁是忙等待, 等待时会占用一整个core, 而互斥锁在等待时会释放core.
 
-## Java 中垃圾回收机制中如何判断对象需要回收？常见的 GC 回收算法有哪些？
+## Java 中垃圾回收机制中如何判断对象需要回收？
+
+- 引用计数法（Reference Counting Collector）：每个对象都有一个引用计数器。优点是执行简单、判定效率高；缺点是难以检测对象的循环应用。
+- 根搜索法（Tracing Collector）：这种方法的基本思路是：以一系列GC根出发，根据引用遍历找到所有的对象。
+  - 注意在开始遍历前，需要暂停线程。这种暂停在JVM中被称为安全点(Safe Point)；
+  - GC根对象包括：栈中的对象；方法区中的常量引用的对象；方法区中类静态属性引用的对象；本地方法栈中JNI的引用对象；活跃线程。
+
+## 常见的 GC 回收算法有哪些？
+
+1. **Tracing算法 或 标记—清除算法**：首先标记出所需回收的对象，在标记完成后统一回收所有被标记的对象。
+
+   缺点：标记和清楚过程的效率都不高；标记清除会产生大量的内存碎片；
+
+2. **Compacting 算法 或 标记—整理算法**：与tracing算法类似，只不过是将所有的标记的对象先往边界移动，再统一清理。缺点：GC的暂停时间过长。
+
+3. **Copying算法**：将内存区域分为两块：对象面与空闲面。当一面用满了之后，将其中活跃的都复制到另一面。这个算法比较适合新生代；
+
+   缺点：内存被压缩了
+
+4. **Adaptive算法**：结合以上三种算法动态调整。
+
+## JVM垃圾回收器
+
+1. 串行垃圾回收器
+2. 并行垃圾回收器 （jvm默认）
+3. 并发标记扫描垃圾回收器
+4. G1垃圾回收器，暂时无法深入了...
 
 ## 简述 Synchronized，Volatile，可重入锁的不同使用场景及优缺点
 
@@ -96,6 +124,14 @@ allowed to get before its capacity is automatically increased. (default value: 0
 
 老生代：新生代中的实例熬过一定的GC后，便会放到老生代
 
+## 乐观锁和悲观锁，以及他们的应用场景
+
+**乐观锁**：总是假设拿数据时别人不会修改，因此不上锁，但是会在更新时判断该数据是否被更改，通过版本号机制或者CAS算法实现。乐观锁多用于**多读**的场景，提高吞吐率。
+
+​	注：CAS，即Compare And Swap(比较与交换)，是一种无锁算法，基于硬件原语实现，能够在不使用锁的情况下实现多线程之间的变量同步。 但是存在ABA问题，JDK1.5以后的compareAndSet方法提供了原子能力来解决这个问题。
+
+**悲观锁**：总是假设最坏的情况，常见的synchronized以及可重入锁就是悲观锁的方式。适用于多写的场景。
+
 ## 简述 Spring AOP 的原理
 
 ## 实现单例设计模式（懒汉，饿汉）
@@ -109,11 +145,6 @@ allowed to get before its capacity is automatically increased. (default value: 0
 ## Java 类的加载流程是怎样的？什么是双亲委派机制？
 
 ## Java 中 sleep() 、wait() 、yield()的区别
-
-- **sleep**: 
-
-- **wait**: 
-- **yield**: 
 
 ## Java 线程池里的 arrayblockingqueue 与 linkedblockingqueue 的使用场景和区别
 

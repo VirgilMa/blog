@@ -48,3 +48,9 @@ title: "C++ 面试题整理 (整理中)"
 - Such alignment restrictions simplify the design of the hardware forming the
 interface between the processor and the memory system.
 - Intel recommends that data be aligned to improve memory system performance.
+
+## 什么是RAII
+
+*Resource Acquisition Is Initialization*：将资源的生命周期与（获取该资源的）对象的生命周期绑定
+
+虽然RAII和finally都能保证资源管理时的异常安全，但相对来说，使用RAII的代码相对更加简洁。在真实环境中，调用资源释放代码的次数远多于资源类型的个数，所以相对于使用finally来说，使用RAII能减少代码量。
