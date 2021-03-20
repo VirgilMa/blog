@@ -52,9 +52,7 @@ allowed to get before its capacity is automatically increased. (default value: 0
 
 ### ConcurrentHashMap实现原理
 
-使用segment来将锁的粒度减小。
-
-【TODO】
+给每一个node头部加锁
 
 
 
@@ -132,9 +130,35 @@ allowed to get before its capacity is automatically increased. (default value: 0
 
 **悲观锁**：总是假设最坏的情况，常见的synchronized以及可重入锁就是悲观锁的方式。适用于多写的场景。
 
-## 简述 Spring AOP 的原理
+## Redis的持久化存储
 
-## 实现单例设计模式（懒汉，饿汉）
+提供了两种方法：
+
+- Redis Database，简称RDB
+  - 指定时间间隔进行快照存储
+  - 优点：使用单独的子进程进行持久化，主进程不需要进行IO操作，保证了redis的高性能；
+  - 缺点：在持久化之间发生故障，会发生数据丢失。
+- Append-only file，简称AOF
+  - 将每次操作写入log file（或其对应的缓存），你可以指定不同的fsync策略
+  - 优点：比起RDB可以实现更安全的存储
+  - 缺点：在高安全策略下，AOF的速度会比RDB慢；AOF文件相比RDB更大；重启速度更慢
+
+
+
+## MySQL索引构建方式
+
+1. 哈希索引
+2. 全文索引
+3. BTree索引和B+Tree索引
+4. 聚簇索引和非聚簇索引
+
+## 设计模式
+
+- 创造型模式: 工厂, **抽象工厂**, 建造者, 原型, **单例**;
+- 结构型模式: **适配器**, 桥接, 组合, 装饰器, 外观, 享元, **代理**;
+- 行为型模式: 责任链, 命令, 解释器, 迭代器, 中介, 备忘录, **观察者**, 状态, 策略, 模板方法, **访问者**.
+
+## 简述 Spring AOP 的原理
 
 ## 简述 Java 的反射机制及其应用场景
 
@@ -151,7 +175,5 @@ allowed to get before its capacity is automatically increased. (default value: 0
 ## JVM 是怎么去调优的？简述过程和调优的结果
 
 ## String 类能不能被继承？为什么？
-
-## Java 中接口和抽象类的区别
 
 ## 线程池是如何实现的？简述线程池的任务策略
