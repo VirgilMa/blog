@@ -1,3 +1,5 @@
+[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/VirgilMa/blog)
+
 # BLOG
 
 1. install all prerequisites: Ruby (2.4.0 or higher), RubyGems, GCC and Make.
